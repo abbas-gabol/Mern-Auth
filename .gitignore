@@ -94,6 +94,8 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist
+# Ignore test.http file
+test.http
 
 # Gatsby files
 .cache/
