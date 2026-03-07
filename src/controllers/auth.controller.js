@@ -1,6 +1,4 @@
-<<<<<<< Updated upstream
-=======
-import {User} from '../model/user.model.js';
+import { User } from '../model/user.model.js';
 import { sendEmail } from '../services/email.service.js';
 import { welcomeEmailTemplate } from '../services/email.template.js';
 
@@ -18,6 +16,7 @@ const registerUser = async (req, res, next) => {
       email: email.toLowerCase().trim(),
       password,
     });
+
     const { subject, html } = welcomeEmailTemplate(newUser.username);
     try {
       await sendEmail({ to: newUser.email, subject, html });
@@ -33,12 +32,10 @@ const registerUser = async (req, res, next) => {
         username: newUser.username,
         email: newUser.email,
       },
-  });
- 
-
-} catch (error) {
-  next(error);
+    });
+  } catch (error) {
+    next(error);
   }
 };
-export {registerUser};
->>>>>>> Stashed changes
+
+export { registerUser };
