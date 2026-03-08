@@ -1,10 +1,15 @@
-###
-#regsiter user
-POST http://localhost:5000/api/auth/registerUser
+### ─── 1. Login ────────────────────────────────────────────────────────────────
+# @name login
+POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-    "username":"abbasgabol",
-    "email":"abbasgabol321@gmail.com",
-    "password":"password123"
+  "email": "abbasgabol321@gmail.com",
+  "password": "password123"
 }
+
+### ─── 2. Logout All (uses accessToken from login response) ───────────────────
+# @name logoutAll
+POST http://localhost:5000/api/auth/logout-all
+Authorization: Bearer {{login.response.body.accessToken}}
+
