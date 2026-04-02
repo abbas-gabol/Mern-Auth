@@ -30,7 +30,20 @@ const userSchema = new mongoose.Schema(
       maxlength: 100,
     },
 
-   
+    googleId: {
+      type: String,
+      default: null,
+    },
+
+    passwordResetToken: {
+      type: String,
+      default: null,
+    },
+    passwordResetExpires: {
+      type: Date,
+      default: null,
+    },
+
     tokenVersion: {
       type: Number,
       default: 0,
@@ -124,6 +137,38 @@ userSchema.methods.revokeRefreshToken = async function (rawToken) {
 userSchema.methods.revokeAllTokens = async function () {
   this.refreshTokens = [];
   this.tokenVersion += 1;
+  await this.save();
+};
+
+userSchema.methods.generatePasswordResetToken = async function () {
+  const resetToken = crypto.randomBytes(32).toString('hex');
+  
+  this.passwordResetToken = crypto
+    .createHash('sha256')
+    .update(resetToken)
+    .digest('hex');
+  
+  this.passwordResetExpires = new Date(Date.now() + 1 * 60 * 60 * 1000); // 1 hour
+  
+  await this.save();
+  return resetToken;
+};
+
+userSchema.methods.verifyPasswordResetToken = function (resetToken) {
+  const hashedToken = crypto
+    .createHash('sha256')
+    .update(resetToken)
+    .digest('hex');
+  
+  return (
+    this.passwordResetToken === hashedToken &&
+    this.passwordResetExpires > new Date()
+  );
+};
+
+userSchema.methods.clearPasswordResetToken = async function () {
+  this.passwordResetToken = null;
+  this.passwordResetExpires = null;
   await this.save();
 };
 

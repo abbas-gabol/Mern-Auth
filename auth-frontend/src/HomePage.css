@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap');
+
+.home-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafaf8;
+  font-family: 'DM Sans', sans-serif;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-bg-noise {
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 20%, #f0ede8 0%, transparent 60%),
+    radial-gradient(circle at 80% 80%, #e8edf0 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home-card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 480px);
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  padding: 38px 32px;
+  text-align: center;
+}
+
+.home-logo-mark {
+  margin: 0 auto 16px;
+  width: 48px;
+  height: 48px;
+}
+
+.home-logo-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
+}
+
+.home-heading {
+  font-size: 24px;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.home-subheading {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.home-user-info {
+  font-size: 13px;
+  color: #374151;
+  margin-bottom: 24px;
+}
+
+.home-buttons {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.home-btn {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 12px 20px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.settings-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.settings-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+.logout-btn {
+  background: #111827;
+  color: white;
+}
+
+.logout-btn:hover {
+  background: #1f2937;
+  transform: translateY(-2px);
+}
+
+.logout-all-btn {
+  background: #dc2626;
+  color: white;
+}
+
+.logout-all-btn:hover {
+  background: #b91c1c;
+  transform: translateY(-2px);
+}
+
+.home-footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.home-footer-link {
+  background: none;
+  border: none;
+  color: #2563eb;
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0;
+}
+
+.home-footer-link:hover {
+  text-decoration: underline;
+}
+
+.home-footer-separator {
+  color: #d1d5db;
+}

@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafaf8;
+  font-family: 'DM Sans', sans-serif;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-bg-noise {
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 20%, #f0ede8 0%, transparent 60%),
+    radial-gradient(circle at 80% 80%, #e8edf0 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.login-card {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 48px 44px 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 2px 40px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+  animation: fadeUp 0.5s ease both;
+}
+
+.login-logo-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.login-logo-inner {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: white;
+  opacity: 0.9;
+}
+
+.login-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f0f0f;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.login-subheading {
+  font-size: 13.5px;
+  color: #8a8a8a;
+  font-weight: 400;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.login-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.login-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #3a3a3a;
+  letter-spacing: 0.01em;
+}
+
+.login-input-wrap {
+  position: relative;
+  border-radius: 10px;
+  border: 1.5px solid #e8e8e8;
+  background: #f9f9f8;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.login-input-wrap.focus {
+  border-color: #111;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+.login-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: #111;
+  outline: none;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.login-input::placeholder {
+  color: #bbb;
+}
+
+.login-eye-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 6px;
+  transition: color 0.2s;
+}
+
+.login-eye-btn:hover {
+  color: #666;
+}
+
+.login-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -4px;
+}
+
+.login-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.login-checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1.5px solid #d0d0d0;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.login-checkbox.checked {
+  background: #111;
+  border-color: #111;
+}
+
+.login-checkbox-text {
+  font-size: 13px;
+  color: #555;
+  font-weight: 400;
+}
+
+.login-link {
+  font-size: 13px;
+  color: #111;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.login-link:hover {
+  opacity: 0.75;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 13px;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: all 0.2s;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.login-btn:hover:not(:disabled) {
+  background: #1a1a1a;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+
+.login-btn:disabled {
+  background: #444;
+  cursor: not-allowed;
+}
+
+.login-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+.login-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 2px 0;
+}
+
+.login-divider-line {
+  flex: 1;
+  height: 1px;
+  background: #ebebeb;
+}
+
+.login-divider-text {
+  font-size: 12px;
+  color: #bbb;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+.login-google-btn {
+  width: 100%;
+  padding: 12px;
+  background: #fff;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.login-google-btn:hover {
+  background: #f5f5f5;
+  border-color: #c0c0c0;
+}
+
+.login-footer {
+  text-align: center;
+  font-size: 13px;
+  color: #999;
+  margin-top: 28px;
+}
+
+.login-signup-link {
+  color: #111;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+.login-signup-link:hover {
+  opacity: 0.75;
+}
+
+.login-footer-links {
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-footer-link {
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.login-footer-link:hover {
+  color: #111;
+}
+
+.login-footer-separator {
+  color: #ccc;
+}

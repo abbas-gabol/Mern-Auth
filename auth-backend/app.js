@@ -3,10 +3,17 @@ import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import authRoutes from './src/routers/auth.route.js';
+import cors from 'cors';
+
+
 
 const app = express();
 
 app.use(helmet());
+app.use(cors({
+  origin: 'http://localhost:5173', // Vite's default port
+  credentials: true,               // required for cookies
+}));
 
 
 app.use(express.json());

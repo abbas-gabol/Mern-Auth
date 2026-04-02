@@ -21,10 +21,17 @@ transporter.verify((error, success) => {
   }
 });
 export const sendEmail = async ({ to, subject, html }) => {
-  await transporter.sendMail({
-    from: `"Authcore" <${process.env.SENDER_EMAIL}>`,
-    to,
-    subject,
-    html,
-  });
+  try {
+    const result = await transporter.sendMail({
+      from: `"Authcore" <${process.env.SENDER_EMAIL}>`,
+      to,
+      subject,
+      html,
+    });
+    console.log("Email sent successfully:", result.messageId);
+    return result;
+  } catch (error) {
+    console.error("Email send error:", error.message);
+    throw error;
+  }
 };
