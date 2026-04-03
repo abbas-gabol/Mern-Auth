@@ -2,6 +2,8 @@ import { useState } from "react";
 import "./ChangePasswordPage.css";
 import { EyeIcon } from "./icons";
 
+const API = import.meta.env.VITE_API_BASE_URL;
+
 export default function ChangePasswordPage({ onBack }) {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -45,7 +47,7 @@ export default function ChangePasswordPage({ onBack }) {
       const timeoutId = setTimeout(() => controller.abort(), 10000);
 
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5000/api/auth/change-password", {
+      const response = await fetch(`${API}/api/auth/change-password`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

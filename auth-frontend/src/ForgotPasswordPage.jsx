@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./ForgotPasswordPage.css";
 
+const API = import.meta.env.VITE_API_BASE_URL;
+
 export default function ForgotPasswordPage({ onBackToLogin }) {
   const [email, setEmail] = useState("");
   const [emailFocused, setEmailFocused] = useState(false);
@@ -32,7 +34,7 @@ export default function ForgotPasswordPage({ onBackToLogin }) {
       const timeoutId = setTimeout(() => controller.abort(), 10000);
 
       // Check if email exists in backend
-      const response = await fetch("http://localhost:5000/api/auth/check-email", {
+      const response = await fetch(`${API}/api/auth/check-email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -76,7 +78,7 @@ export default function ForgotPasswordPage({ onBackToLogin }) {
       const timeoutId = setTimeout(() => controller.abort(), 10000);
 
       // Send reset link
-      const response = await fetch("http://localhost:5000/api/auth/forgot-password", {
+      const response = await fetch(`${API}/api/auth/forgot-password`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

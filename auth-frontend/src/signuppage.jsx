@@ -4,6 +4,8 @@ import { GoogleIcon, EyeIcon, UserIcon, CheckIcon } from "./icons";
 import SuccessModal from "./SuccessModal";
 import TermsModal from "./TermsModal";
 
+const API = import.meta.env.VITE_API_BASE_URL;
+
 function PasswordStrength({ password }) {
   const getStrength = (p) => {
     if (!p) return 0;
@@ -85,7 +87,7 @@ export default function SignupPage({ onSwitchToLogin }) {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 10000);
 
-      const res = await fetch("http://localhost:5000/api/auth/google-signin", {
+      const res = await fetch(`${API}/api/auth/google-signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -146,7 +148,7 @@ export default function SignupPage({ onSwitchToLogin }) {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
 
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+      const response = await fetch(`${API}/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

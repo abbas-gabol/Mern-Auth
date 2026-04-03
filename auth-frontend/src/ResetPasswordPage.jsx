@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import "./ResetPasswordPage.css";
 import { EyeIcon } from "./icons";
 
+const API = import.meta.env.VITE_API_BASE_URL;
+
 function PasswordStrength({ password }) {
   const getStrength = (p) => {
     if (!p) return 0;
@@ -89,7 +91,7 @@ export default function ResetPasswordPage({ onSuccess }) {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 10000);
 
-      const response = await fetch("http://localhost:5000/api/auth/reset-password", {
+      const response = await fetch(`${API}/api/auth/reset-password`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

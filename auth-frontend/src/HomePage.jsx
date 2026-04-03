@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import "./HomePage.css";
 import TermsModal from "./TermsModal";
 
+const API = import.meta.env.VITE_API_BASE_URL;
+
 export default function HomePage({ onLogout, onChangePassword }) {
   const [termsModalOpen, setTermsModalOpen] = useState(false);
   const [termsModalTab, setTermsModalTab] = useState("terms");
@@ -31,7 +33,7 @@ export default function HomePage({ onLogout, onChangePassword }) {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5000/api/auth/logout-all", {
+      const response = await fetch(`${API}/api/auth/logout-all`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

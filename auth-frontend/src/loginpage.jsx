@@ -3,6 +3,8 @@ import "./LoginPage.css";
 import { GoogleIcon, EyeIcon } from "./icons";
 import TermsModal from "./TermsModal";
 
+const API = import.meta.env.VITE_API_BASE_URL;
+
 export default function LoginPage({ onSwitchToSignup, onSwitchToForgotPassword }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -42,7 +44,7 @@ export default function LoginPage({ onSwitchToSignup, onSwitchToForgotPassword }
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 10000);
 
-      const res = await fetch("http://localhost:5000/api/auth/google-signin", {
+      const res = await fetch(`${API}/api/auth/google-signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -91,7 +93,7 @@ export default function LoginPage({ onSwitchToSignup, onSwitchToForgotPassword }
       const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
 
       // API call to backend
-      const response = await fetch("http://localhost:5000/api/auth/login", {
+      const response = await fetch(`${API}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
