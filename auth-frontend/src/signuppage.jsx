@@ -173,9 +173,9 @@ export default function SignupPage({ onSwitchToLogin }) {
       // Registration successful - showing success message\n      setSuccess(true)\n      setSuccessData({ username, email })\n      setError(""); // Clear any error\n      // Redirect to login page after modal\n      setTimeout(() => {\n        onSwitchToLogin?.();\n      }, 3000);
     } catch (err) {
       if (err.name === "AbortError") {
-        setError("Request timeout - Backend server not responding. Make sure backend is running on port 5000");
+        setError("Request timeout - Please try again later.");
       } else if (err instanceof TypeError) {
-        setError("Cannot connect to backend. Make sure backend is running: npm run dev");
+        setError("Network error - Please check your connection and try again.");
       } else {
         setError(err.message || "An error occurred");
       }
