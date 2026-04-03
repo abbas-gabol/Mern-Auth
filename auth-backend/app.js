@@ -10,9 +10,20 @@ import cors from 'cors';
 const app = express();
 
 app.use(helmet());
+
+const allowedOrigins = [
+  process.env.FRONTEND_URL || 'http://localhost:5173',
+  process.env.FRONTEND_URL_PROD,
+].filter(Boolean);
+
 app.use(cors({
-  origin: 'http://localhost:5173', // Vite's default port
-  credentials: true,               // required for cookies
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error(`CORS blocked by policy: ${origin}`));
+  },
+  credentials: true,
 }));
 
 
