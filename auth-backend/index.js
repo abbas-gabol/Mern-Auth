@@ -1,22 +1,12 @@
 import dotenv from 'dotenv';
-dotenv.config({path:'./.env'});
+dotenv.config({ path: './.env' });
 
 import app from './app.js';
 import connectDB from './src/config/database.js';
 
-const startserver = async()=>{
-    try{
-        await connectDB();
+// Connect to DB on cold start
+connectDB().catch(err => {
+  console.error('DB connection failed', err);
+});
 
-        app.listen(process.env.PORT || 8000,()=>{
-            console.log(`Server running on port ${process.env.PORT || 8000}`);
-        });
-
-
-    }catch(error){
-        console.error('Startup failed',error);
-        throw error;
-    }
-};
-
-startserver();
+export default app; // ← Vercel needs this instead of app.listen()
