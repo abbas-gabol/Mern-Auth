@@ -141,7 +141,7 @@ export default function LoginPage({ onSwitchToSignup, onSwitchToForgotPassword }
           <div className="login-logo-inner" />
         </div>
 
-        <h1 className="login-heading">Welcome Back</h1>
+        <h1 className="login-heading">Welcome </h1>
         <p className="login-subheading">Enter your email and password to access your account</p>
 
         {error && <div style={{ color: "#f87171", fontSize: "13px", marginBottom: "16px", padding: "10px", background: "rgba(248,113,113,0.1)", borderRadius: "8px" }}>{error}</div>}
