@@ -13,7 +13,7 @@ app.use(helmet());
 
 const allowedOrigins = [
   process.env.FRONTEND_URL || 'http://localhost:5173',
-  process.env.FRONTEND_URL_PROD,
+  'https://authcore-three.vercel.app',
 ].filter(Boolean);
 
 app.use(cors({
